@@ -2,50 +2,67 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/index.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <title>نمایش فیلدهای دیگر</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <header class="mybg">
-    <input type="search" placeholder="جستجوی محصولات" required  class="box">
-    <button class="submit"></button>
-     <img src="/images/mail.png" class="images">
-      <img src="/images/shopping-online.png" class="image1">
-      <img src="/images/group.png" class="image2">
-      <img src="https://favstor.com/wp-content/uploads/2021/10/logo-1.png" class="image3">
-  </header>
-  <div  class="content">
-    <div class="product">
-      <button class="product-submit">
-        <svg class="product-submit-icon"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-        دسته بندی کالاها
-        <svg class="product-submit-icon1"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" id="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
-        
-      </button>
-    </div>
-    <div class="product-list">
-      <ul class="list">
-        <li><a href="#">ولنتاین</a></li>
-        <li><a href="#">لوازم تحریر</a></li>
-        <li> <a href="#">ظروف فانتزی</a></li>
-        <li> <a href="#">کالای شخصی و بهداشتی</a></li>
-        <li> <a href="#">کالای فانتزی</a></li>
-        <li> <a href="">لوازم جانبی موبایل</a></li>
-        <li> <a href="">لوازم ارایشی</a></li>
-        <li><a href="">پوشیدنی ها</a></li>
-      </ul>
-   </div>
-  </div>
-  <main class="back">
-    <img src="/images/Screenshot 2024-04-14 194844.png" class="background">
-    
-    
-  </main>
+    <form>
+        <label for="Collection name">نام مجموعه خود را انتخاب کنید</label>
+        <select id="Collection name">
+            <option value="option1">مجموعه فرهنگی ورزشی کارگران شهرستان ارومیه</option>
+            <option value="option2">مجموعه فرهنگی ورزشی کارگران شهرستان بوکان</option>
+            <option value="option3">مجموعه فرهنگی ورزشی کارگران شهرستان خوی</option>
+            <option value="option4">مجموعه فرهنگی ورزشی کارگران شهرستان مهاباد</option>
+            <option value="option5">مجموعه فرهنگی ورزشی کارگران شهرستان میاندوآب</option>
+        </select>
+        <br>
+        <label for="mainField">  بهره برداری مجموعه:</label>
+        <select id="mainField" onchange="showFields()">
+            <option value="option">-- بهره برداری مجموعه --</option>
+            <option value="option1"> خود گردان</option>
+            <option value="option2">پیمانکار </option>
+        </select>
+
+        <div id="fieldsForOption1" class="hidden">
+            <label for="field1_1">ورزش مورد نظر را انتخاب کنید:</label>
+            <input type="radio" id="field1_1" name="field1_1">فوتبال
+            <input type="radio" id="field1_1" name="field1_1">والیبال
+            <input type="radio" id="field1_1" name="field1_1">استخر<br>
+            <label for="field1_2">تعداد سانس :</label>
+            <input type="text" id="field1_2" name="field1_2"><br>
+        </div>
+
+        <div id="fieldsForOption2" class="hidden">
+            <label for="field2_1">فیلد ۲-۱:</label>
+            <input type="text" id="field2_1" name="field2_1"><br>
+
+            <label for="field2_2">فیلد ۲-۲:</label>
+            <input type="text" id="field2_2" name="field2_2"><br>
+        </div>
+        <br>
+        <button type="submit">ارسال</button>
+    </form>
+
+    <script>
+        function showFields() {
+            // مخفی کردن همه فیلدها
+            document.getElementById('fieldsForOption1').classList.add('hidden');
+            document.getElementById('fieldsForOption2').classList.add('hidden');
+
+            // دریافت مقدار انتخاب شده
+            var selectedValue = document.getElementById('mainField').value;
+
+            // نمایش فیلدهای مرتبط با گزینه انتخاب شده
+            if (selectedValue === 'option1') {
+                document.getElementById('fieldsForOption1').classList.remove('hidden');
+            } else if (selectedValue === 'option2') {
+                document.getElementById('fieldsForOption2').classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
-</html> 
+</html>
